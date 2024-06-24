@@ -1,0 +1,85 @@
+.data-wrapper{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(179, 128, 218);
+    border: 1px solid rgb(35, 37, 41);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.data-wrapper:hover{
+    background-color: rgb(137, 98, 166) !important;
+}
+.data-wrapper .data{
+    width: 90%;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title p{
+    font-size: 1vw;
+    color: black;
+    font-weight: 700;
+}
+.data .option-wrapper{
+    transition: 1s;
+    width: 21%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90%;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+}
+.option-wrapper .delete{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 35px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    background-color: rgb(237, 116, 97);
+}
+.delete:hover{
+    background-color: rgb(186, 91, 76);
+}
+.option-wrapper .mark-done{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 35px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    background-color: rgb(127, 188, 149);
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+.option-wrapper .mark-done:hover{
+    background-color:rgb(102, 150, 119) ;
+}
