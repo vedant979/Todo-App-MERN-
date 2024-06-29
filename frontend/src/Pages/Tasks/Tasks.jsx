@@ -59,10 +59,10 @@ export const Tasks = () => {
 
   //--------------Functions Declaration---------------------
   function handleSubmit(e) {
-    e.preventDefault();
+    // e.preventDefault();
     addData(formData);
     // window.location.reload();
-    navigate("/todo");
+    // navigate("/todo");
     // getUser();
   }
   // console.log(import.meta.env.VITE_LOCALHOST)
