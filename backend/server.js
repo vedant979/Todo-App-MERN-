@@ -7,7 +7,7 @@ import {loginRouter} from "./Routes/loginRoute.js";
 import  jwt  from "jsonwebtoken";
 import cors from "cors";
  
-const server = express();
+const server = express(); 
    
 //DB CONNECTION 
 main().catch(err => console.log(err));

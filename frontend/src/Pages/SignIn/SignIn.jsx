@@ -43,6 +43,7 @@ export const SignIn = () => {
     const getData = async()=>{
         const resp = await axios.get(import.meta.env.VITE_LOCALHOST+"/signup/2");
         setUserData(resp.data);
+        console.log(...userData)
     }
 
     function handleChangeEmail(e){
