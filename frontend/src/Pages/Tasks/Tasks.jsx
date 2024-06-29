@@ -1,15 +1,16 @@
 import React from "react";
 import axios from "axios";
 
-import { useEffect, useState, useNavigate } from "react";
+import { useEffect, useState} from "react";
 import "./Tasks.css";
 import { NavBar } from "../../Components/NavBar/NavBar";
 import { Row } from "../../Components/Row/Row";
+import { useNavigate } from "react-router";
 export const Tasks = () => {
   //VARIABLE, STATE DECLARATION
   const [db, setDb] = useState([]);
   const [path, setPath] = useState(window.location.pathname);
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [userId, setUserId] = useState({
     _id: "",
     firstName: "",
@@ -28,7 +29,11 @@ export const Tasks = () => {
     useEffect(()=>{
         getUser();
     },[])
-  //CRUD OPERATIONS
+    useEffect(()=>{
+      getData();
+  },[userId])
+
+
   //C-CREATE
   async function addData(data) {
     if (data.todo == "") {
@@ -43,7 +48,9 @@ export const Tasks = () => {
   //R-READ
   async function getData() {
       const params = { _id: userId._id };
-      await axios.get(import.meta.env.VITE_LOCALHOST, { params }).then((res) => {
+      // console.log(params)
+      await axios.get(import.meta.env.VITE_LOCALHOST+"/get", { params }).then((res) => {
+        // console.log(res)
         setDb([...res.data]);
       });
     // }
@@ -54,8 +61,11 @@ export const Tasks = () => {
   function handleSubmit(e) {
     e.preventDefault();
     addData(formData);
-    navigate("/todo");
+    window.location.reload();
+    // navigate("/todo");
+    // getUser();
   }
+  // console.log(import.meta.env.VITE_LOCALHOST)
   function handleChange(e) {
     setformData({
       [e.target.name]: e.target.value,
@@ -72,9 +82,7 @@ export const Tasks = () => {
   //-------------------------------------------------------
 
   //USE EFFECTS
-  useEffect(()=>{
-      getData();
-  },[userId])
+
   //-------------------------------------------------------
 
   // console.log(userId)

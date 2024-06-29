@@ -26,7 +26,7 @@ export const Deleted = () => {
     async function getData(){
         const params = { _id: user._id };
         try{
-            const response = await axios.get(import.meta.env.VITE_LOCALHOST,{params:params});
+            const response = await axios.get(import.meta.env.VITE_LOCALHOST+"/get",{params:params});
             setDb(response.data);
         }catch(err){
             console.log(err)
@@ -71,7 +71,7 @@ export const Deleted = () => {
                         {db && db.map((data)=>{
                             return(
                               data.isActive &&
-                                <Row id={data._id} path={path=="/deleted" && path} title={data.todo} marked={data.marked} isActive={data.isActive}/>  
+                                <Row key={data._id}id={data._id} path={path=="/deleted" && path} title={data.todo} marked={data.marked} isActive={data.isActive}/>  
                             )
                         })
                         }

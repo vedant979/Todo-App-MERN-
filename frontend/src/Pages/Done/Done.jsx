@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 export const Done = () => {
       //VARIABLE, STATE DECLARATION
-      const[db, setDb] = useState();
+      const[db, setDb] = useState([]);
       const[path, setPath] = useState(window.location.pathname);
       const [user, setUser] = useState({
         _id: "",
@@ -27,8 +27,9 @@ export const Done = () => {
       async function getData(){ 
         const params = { _id: user._id };
         try{
-            const response = await axios.get(import.meta.env.VITE_LOCALHOST, {params: params});
+            const response = await axios.get(import.meta.env.VITE_LOCALHOST+"/get", {params: params});
             setDb(response.data);
+            // console.log(db)
         }catch(err){
             console.log(err);
         }
@@ -75,7 +76,7 @@ export const Done = () => {
                         db.map((data)=>{
                             return(
                               data.marked &&
-                                <Row id={data._id} path={path=="/done" && path} title={data.todo} marked={data.marked} isActive={data.isActive}/>  
+                                <Row key={data._id} id={data._id} path={path=="/done" && path} title={data.todo} marked={data.marked} isActive={data.isActive}/>  
                             )
                         })
                         }
