@@ -13,6 +13,7 @@ const create= async (req, res)=>{
 const getAll = async(req, res)=>{ 
     try{ 
         const id = await `${req.query._id}`
+        console.log(id);
         const hex = /[0-9A-Fa-f]{6}/;
 
         if(hex.test(id)){

@@ -6,7 +6,7 @@ import {userRouter} from "./Routes/userRoutes.js";
 import {loginRouter} from "./Routes/loginRoute.js"; 
 import  jwt  from "jsonwebtoken";
 import cors from "cors";
- 
+  
 const server = express(); 
    
 //DB CONNECTION 

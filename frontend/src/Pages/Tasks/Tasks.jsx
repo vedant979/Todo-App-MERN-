@@ -117,23 +117,7 @@ export const Tasks = () => {
               </div>
               <div className="bottom-wrapper">
                 <div className="row-container">
-                  {db.length > 0 &&
-                    db.map((data) => {
-                      // console.log(data)
-                      return (
-                        data.isActive == false &&
-                        data.marked == false && (
-                          <Row
-                            id={data._id}
-                            path={path == "/" && path}
-                            key={data._id}
-                            title={data.todo}
-                            marked={data.marked}
-                            isActive={data.isActive}
-                          />
-                        )
-                      );
-                    })}
+
                 </div>
               </div>
             </div>
