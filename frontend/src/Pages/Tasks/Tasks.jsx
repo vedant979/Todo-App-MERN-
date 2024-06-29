@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useNavigate } from "react";
 import "./Tasks.css";
 import { NavBar } from "../../Components/NavBar/NavBar";
 import { Row } from "../../Components/Row/Row";
@@ -9,6 +9,7 @@ export const Tasks = () => {
   //VARIABLE, STATE DECLARATION
   const [db, setDb] = useState([]);
   const [path, setPath] = useState(window.location.pathname);
+  const navigate = useNavigate();
   const [userId, setUserId] = useState({
     _id: "",
     firstName: "",
@@ -53,7 +54,7 @@ export const Tasks = () => {
   function handleSubmit(e) {
     e.preventDefault();
     addData(formData);
-    window.location.reload();
+    navigate("/todo");
   }
   function handleChange(e) {
     setformData({
