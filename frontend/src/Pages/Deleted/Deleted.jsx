@@ -9,22 +9,35 @@ export const Deleted = () => {
     //VARIABLE, STATE DECLARATION
     const[db, setDb] = useState();
     const[path, setPath] = useState(window.location.pathname);
-    //-------------------------------------------------------
-
+    const [user, setUser] = useState({
+        _id: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        pass: "",
+        token: "",
+        });
+      //-------------------------------------------------------
+      useEffect(()=>{
+        getUser();
+      },[])
 
     //R-READ
     async function getData(){
+        const params = { _id: user._id };
         try{
-            // console.log("Fetching DB Data...")
-            const response = await axios.get('http://localhost:3000');
-            // console.log("Setting Data...")
+            const response = await axios.get(import.meta.env.VITE_LOCALHOST,{params:params});
             setDb(response.data);
-            // console.log("Data Set")
-
         }catch(err){
             console.log(err)
         }
     }
+    async function getUser() {
+        const res = await axios.get(import.meta.env.VITE_LOCALHOST+"/signup", {
+          headers: { Authorization: localStorage.getItem("token") },
+        });
+        setUser(...res.data);
+      }
     //-------------------------------------------------------
 
 
@@ -35,7 +48,7 @@ export const Deleted = () => {
         }catch(err){
             console.log(err)
         }
-    },[]) 
+    },[user]) 
     //-------------------------------------------------------
   return (
     <div className='container-wrapper'>

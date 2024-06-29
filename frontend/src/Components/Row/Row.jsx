@@ -69,7 +69,6 @@ export const Row = ({id,title, marked, isActive,path}) => {
         <div className='data'>
             <div className='title'>
                 <p>{title}</p>
-                {/* <p></p> */}
             </div>
             <div className='option-wrapper' style={{display: checkHover ? "flex" : "none"}}>
                 <div className='mark-done' onClick={()=>{handleMarked(id)}}>

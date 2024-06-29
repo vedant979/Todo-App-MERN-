@@ -19,7 +19,7 @@ export const NavBar = () => {
           </div>
           <div className='nav-links'>
             <div className='l1'>
-              <Link to="/"> 
+              <Link to="/todo"> 
                 <img src={list}></img>
               </Link>
             </div>

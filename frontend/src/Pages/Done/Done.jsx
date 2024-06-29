@@ -8,24 +8,36 @@ export const Done = () => {
       //VARIABLE, STATE DECLARATION
       const[db, setDb] = useState();
       const[path, setPath] = useState(window.location.pathname);
-
+      const [user, setUser] = useState({
+        _id: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        pass: "",
+        token: "",
+      });
       //-------------------------------------------------------
-  
+      useEffect(()=>{
+        getUser();
+      },[])
   
 
       
       //R-READ
-      async function getData(){
-          try{
-              // console.log("Fetching DB Data...")
-              const response = await axios.get('http://localhost:3000');
-              // console.log("Setting Data...")
-              setDb(response.data);
-              // console.log("Data Set")
-  
-          }catch(err){
-              console.log(err)
-          }
+      async function getData(){ 
+        const params = { _id: user._id };
+        try{
+            const response = await axios.get(import.meta.env.VITE_LOCALHOST, {params: params});
+            setDb(response.data);
+        }catch(err){
+            console.log(err);
+        }
+      }
+      async function getUser() {
+        const res = await axios.get(import.meta.env.VITE_LOCALHOST+"/signup", {
+          headers: { Authorization: localStorage.getItem("token") },
+        });
+        setUser(...res.data);
       }
       //-------------------------------------------------------
   
@@ -37,8 +49,9 @@ export const Done = () => {
           }catch(err){
               console.log(err)
           }
-      },[]) 
+      },[user]) 
       //-------------------------------------------------------
+    //   console.log(user);
 
   return (
     <div className='container-wrapper'>
@@ -60,12 +73,10 @@ export const Done = () => {
                     <div className='row-container'>
                         {db &&
                         db.map((data)=>{
-                          
                             return(
                               data.marked &&
                                 <Row id={data._id} path={path=="/done" && path} title={data.todo} marked={data.marked} isActive={data.isActive}/>  
                             )
-                          
                         })
                         }
                     </div>
