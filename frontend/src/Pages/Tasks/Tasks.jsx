@@ -61,8 +61,8 @@ export const Tasks = () => {
   function handleSubmit(e) {
     e.preventDefault();
     addData(formData);
-    window.location.reload();
-    // navigate("/todo");
+    // window.location.reload();
+    navigate("/todo");
     // getUser();
   }
   // console.log(import.meta.env.VITE_LOCALHOST)
