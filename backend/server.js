@@ -38,15 +38,16 @@ const auth = (req,res,next)=>{
 };  
  
 //BODY PARSER AND MIDDLEWARE   
+server.get("/testing",(req,res)=>{
+  res.send("Successfull!!");
+});
 server.use(cors());    
 server.use(express.json()); 
 server.use(express.static(process.env.PUBLIC_DIR)) 
 server.use("/", todoRouter);  
 server.use("/",userRouter);   
 server.use("/",auth,loginRouter);   
-server.get("/testing",(req,res)=>{
-  res.send("Successfull!!");
-});
+
 
 //  console.log(process.env.PUBLIC_DIR)
   
