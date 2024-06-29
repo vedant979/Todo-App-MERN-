@@ -44,9 +44,11 @@ server.use(express.static(process.env.PUBLIC_DIR))
 server.use("/", todoRouter);  
 server.use("/",userRouter);   
 server.use("/",auth,loginRouter);   
+server.get("/testing",(req,res)=>{
+  res.send("Successfull!!");
+});
 
-
- 
+//  console.log(process.env.PUBLIC_DIR)
   
  
 //Defining PORT Number
