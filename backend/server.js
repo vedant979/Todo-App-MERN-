@@ -12,7 +12,7 @@ const server = express();
 //DB CONNECTION 
 main().catch(err => console.log(err));
 async function main() {
-  await mongoose.connect(process.env.MONGODB_URL); 
+  await mongoose.connect(process.env.MONGODB_URI_123); 
 }
 
 //FUNCTIONS   
